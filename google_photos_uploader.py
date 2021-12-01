@@ -42,8 +42,7 @@ def create_album(session, title):
     url = 'https://photoslibrary.googleapis.com/v1/albums'
     session.headers['Content-type'] = 'application/json'
     msg = {'album':{ 'title': title }}
-    json_body = json.dumps(msg)
-    resp = session.post(url, json_body).json()
+    resp = session.post(url, json.dumps(msg)).json()
     del(session.headers['Content-type'])
     if resp.ok:
         resp_json = resp.json()
@@ -90,11 +89,10 @@ def upload(session, file, album_id=None):
     # Step 2: create media-item based on upload data.
     session.headers['Content-type'] = 'application/json'
     msg = {'newMediaItems':[{'description':'','simpleMediaItem':{'uploadToken':upload_token}}]}
-    if album_id is not None:
+    if album_id:
         msg['albumId'] = album_id
-    json_body = json.dumps(msg)
     url = 'https://photoslibrary.googleapis.com/v1/mediaItems:batchCreate'
-    resp = session.post(url, json_body)
+    resp = session.post(url, json.dumps(msg))
     if resp.ok:
         print('done')
     else:
