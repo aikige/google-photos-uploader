@@ -1,11 +1,10 @@
 # An sample python script for uploading image to Google Photos, for limited-input devices
 
-This is minimal example of python script to upload an image to Google Photos.
+This is minimal example of python script for uploading an image to Google Photos.
 
 There is several similar projects,
-but this program can be run on embedded device which has limited-input methods, like headless Raspberry Pi.
-
-This example is using OAuth scenario for [Limited-input devices](https://developers.google.com/identity/protocols/oauth2#device).
+but this program can be run on embedded device which has limited-input methods, like headless Raspberry Pi,
+since it is using OAuth scenario for [Limited-input devices](https://developers.google.com/identity/protocols/oauth2#device).
 
 ## Preparation
 
@@ -31,9 +30,10 @@ Note that, this script is tested with Python v3.x.
 
 ### 1st Run -- Authentication and Authorization
 
-When you run first time (recommended to run `python google_photos_uploader -l`), please follow this steps:
+When you run first time (recommended to run the script without arguments),
+authentication and authorization are carried out according to following procedure:
 
-1. The script will show URL for authentication in standard output.
+1. The script will show a URL for authentication in standard output.
 1. Please open the URL with your favorite browser and perform authentication and authorization.
     Here, browser will show security warnings, but please ignore these warnings.
 1. At last step of authorization, an *Authorization Code* will be shown on your browser.
